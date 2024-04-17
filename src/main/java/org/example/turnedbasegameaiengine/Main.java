@@ -9,9 +9,10 @@ import org.example.turnedbasegameaiengine.game.Cell;
 import org.example.turnedbasegameaiengine.game.Move;
 import org.example.turnedbasegameaiengine.game.Player;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
+
 
     public static void main(String[] args) {
         GameEngine gameEngine = new GameEngine();
@@ -34,7 +35,7 @@ public class Main {
             gameEngine.move(board, opponentMove);
             System.out.println(board);
 
-            if(!ruleEngine.getState(board).isOver()) {
+            if (!ruleEngine.getState(board).isOver()) {
                 // Computer Move
                 Move computerMove = aiEngine.suggestMove(computer, board);
                 gameEngine.move(board, computerMove);

@@ -69,7 +69,6 @@ public class GamePlayTest {
     public void checkForRevDiagWin() {
         Board board = gameEngine.start("TicTacToe");
 
-        int next = 0;
         int[][] firstPlayerMoves = new int[][]{{0, 2}, {1, 1}, {2, 0}};
         int[][] secondPlayerMoves = new int[][]{{0, 0}, {0, 1}, {2, 2}};
         playGame(board, firstPlayerMoves, secondPlayerMoves);
@@ -78,7 +77,7 @@ public class GamePlayTest {
     }
 
     @Test
-    public void checkForComputerWin() {
+    public void checkForSecondPlayerWin() {
         Board board = gameEngine.start("TicTacToe");
 
         int[][] firstPlayerMoves = new int[][]{{1, 0}, {1, 1}, {2, 0}};
@@ -90,25 +89,23 @@ public class GamePlayTest {
 
 
     private void playGame(Board board, int[][] firstPlayerMoves, int[][] secondPlayerMoves) {
-        int col;
-        int row;
         int next = 0;
         while (!ruleEngine.getState(board).isOver()) {
 
-            Player human = new Player("X");
-            Player computer = new Player("O");
+            Player firstPlayer = new Player("X");
+            Player secondPlayer = new Player("O");
 
             // User Move
-            row = firstPlayerMoves[next][0];
-            col = firstPlayerMoves[next][1];
-            Move opponentMove = new Move(new Cell(row, col), human);
+            int row = firstPlayerMoves[next][0];
+            int col = firstPlayerMoves[next][1];
+            Move opponentMove = new Move(new Cell(row, col), firstPlayer);
             gameEngine.move(board, opponentMove);
 
             if (!ruleEngine.getState(board).isOver()) {
                 // Computer Move
                 int sRow = secondPlayerMoves[next][0];
                 int sCol = secondPlayerMoves[next][1];
-                Move computerMove = new Move(new Cell(sRow, sCol), computer);
+                Move computerMove = new Move(new Cell(sRow, sCol), secondPlayer);
                 gameEngine.move(board, computerMove);
             }
             next++;
