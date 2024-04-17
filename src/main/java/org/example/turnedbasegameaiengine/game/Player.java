@@ -2,7 +2,7 @@ package org.example.turnedbasegameaiengine.game;
 
 public class Player {
 
-    private String symbol;
+    private final String symbol;
 
     public Player(String symbol) {
         this.symbol = symbol;

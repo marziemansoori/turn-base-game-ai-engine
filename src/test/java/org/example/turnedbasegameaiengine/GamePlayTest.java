@@ -57,7 +57,6 @@ public class GamePlayTest {
     public void checkForDiagWin() {
         Board board = gameEngine.start("TicTacToe");
 
-        int next = 0;
         int[][] firstPlayerMove = new int[][]{{0, 0}, {1, 1}, {2, 2}};
         int[][] secondPlayerMove = new int[][]{{0, 1}, {1, 0}, {2, 0}};
         playGame(board, firstPlayerMove, secondPlayerMove);

@@ -28,6 +28,8 @@ public class RuleEngine {
             throw new IllegalArgumentException();
         }
 
+        GameState gameState = getState(board1);
+
         String[] players = new String[]{"X", "O"};
         for (int playerSymbol = 0; playerSymbol < 2; playerSymbol++) {
             for (int i = 0; i < 3; i++) {
@@ -51,7 +53,8 @@ public class RuleEngine {
                     }
                     if (canStillWin) {
                         return new GameInfoBuilder()
-                                .isOver(true)
+                                .isOver(gameState.isOver())
+                                .winner(gameState.getWinner())
                                 .player(player.flip())
                                 .hasFork(true)
                                 .build();
@@ -61,7 +64,8 @@ public class RuleEngine {
         }
 
         return new GameInfoBuilder()
-                .isOver(true)
+                .isOver(gameState.isOver())
+                .winner(gameState.getWinner())
                 .build();
     }
 

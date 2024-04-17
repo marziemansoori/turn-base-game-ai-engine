@@ -36,7 +36,7 @@ public class TicTacToeBoard implements Board {
 
     @Override
     public void move(Move move) {
-        setCell(move.getCell(), move.getPlayer().getSymbol());
+        setCell(move.cell(), move.player().getSymbol());
     }
 
     @Override
